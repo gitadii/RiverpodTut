@@ -1,0 +1,28 @@
+### Types of providers :
+    - Provider = read only provider, its value cannot be changed. Immutable.
+    - StateProvider = It is also Immutable but is has ".notifier" which gives you the update() 
+                        method to update the value, its value can be changed, e.g. taking a value
+                        from the user and assigning it.
+                        It is used for simple values like String, int, etc.
+    - StateNotifier and StateNotifierProvider = They are used to deal with more complex datatypes.
+    - ChangeNotifierProvider = It directly comes from the "Provider" package.It is very similar to
+                                the above, the difference is just that there is no "state" variable
+                                you have to create one and also you can update the values without
+                                ".notifier". Also it doesn't automatically rebuild the build(), in
+                                every function it is required to call "notifyListeners()".
+                                It is MUTABLE ( it is a bad thing ). Thus, it is not recommended.
+    - FutureProvider = Deals with https calls and asyn-ed code.
+
+
+
+
+### Notes -
+1. ref.watch() => creates a listener which continously listens for any change in the value of the
+    provider. It is recommended to use it inside the Build function only.
+
+2. ref.read() => it listens to the value only once, thus it is not recommended to use it inside 
+    the build function but outside.
+    It is used inside the LIFECYCLE Methods (init(), dispose()) and the Methods which are created
+    by me.
+    The methods created by me can be inside or outside the build function but they will use read()
+    only.
