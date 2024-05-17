@@ -11,7 +11,8 @@
                                 ".notifier". Also it doesn't automatically rebuild the build(), in
                                 every function it is required to call "notifyListeners()".
                                 It is MUTABLE ( it is a bad thing ). Thus, it is not recommended.
-    - FutureProvider = Deals with https calls and asyn-ed code.
+    - FutureProvider = Deals with https calls and asyn-ed code. Gives the .when(data: (data) => , error: (error, stackTrace) => , loading: () => ); as it gives a async value.
+    - StreamProvider =  
 
 
 

@@ -3,15 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_tut/home_screen.dart';
 import 'package:riverpod_tut/user_model.dart';
 
-// StateNotifier and StateNotifierProvider
-final userProvider = StateNotifierProvider<UserNotifier, UserModel>(
-  (ref) => UserNotifier(),
-);
+// // StateNotifier and StateNotifierProvider
+// final userProvider = StateNotifierProvider<UserNotifier, UserModel>(
+//   (ref) => UserNotifier(),
+// );
 
-// ChangeNotifierProvider
-final userChangeNotifierProvidre = ChangeNotifierProvider(
-  (ref) => UserChangeNotifier(),
-);
+// // ChangeNotifierProvider
+// final userChangeNotifierProvidre = ChangeNotifierProvider(
+//   (ref) => UserChangeNotifier(),
+// );
+
+final fetchUserProvider = FutureProvider((ref) {
+  final userRepository = ref.watch(userRepositoryProvider);
+  return userRepository.fetchUserData();
+});
 
 void main() {
   runApp(
